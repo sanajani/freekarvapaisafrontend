@@ -66,7 +66,7 @@ const PhoneNumberVerifier = () => {
       })
       .catch(error => {
         console.log(error)
-        showToast('کود ارسال نشد', 'error')
+        showToast('شماره مبایل تان درست نیست', 'error')
         setisOTPSend(false)
       })
   }else{

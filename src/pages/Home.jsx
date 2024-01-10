@@ -2,8 +2,22 @@ import SearchAndPlace from '../components/homepagecomponents/SearchAndPlace'
 import { IoIosArrowDown } from 'react-icons/io'
 import FindJobHomePageComponent from '../components/homepagecomponents/FindJobHomePageComponent'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { api } from '../utils/api'
 
 const Home = () => {
+  const currentPage = 1
+  const jobSearchParams=''
+  const provicneSearchParams = ''
+  useEffect(() => {
+    const getAllUsers = async () => {
+      const resp = await api.get(`/api/v1/user/users?page=${currentPage}&job=${jobSearchParams}&province=${provicneSearchParams}`,{
+        timeout: 5000
+      })
+      console.log(resp);
+    }
+    getAllUsers()
+  },[])
 
   return (
     <main className=' min-w-full'>

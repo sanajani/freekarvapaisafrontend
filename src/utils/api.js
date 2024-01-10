@@ -5,8 +5,8 @@ const SERVER_URL = 'https://freekarvapaisabackend.onrender.com'
 
 
 export const api = axios.create({
-    baseURL: SERVER_URL|| "http://localhost:9808",
-    timeout: 5000,
+    baseURL: SERVER_URL,
+    timeout: 15000,
     headers: {
         "Content-Type": "application/json",
     }

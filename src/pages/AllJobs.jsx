@@ -2,11 +2,14 @@
 import { api } from "../utils/api"
 import SearchTable from "../components/searchTable/SearchTable"
 import { useState,useEffect } from "react"
-
+import {useSelector, useDispatch } from 'react-redux'
+import { showLoading,hideLoading } from "../redux/features/loadingSlice";
 import { FcNext,FcPrevious } from "react-icons/fc";
 import { Link, useSearchParams } from "react-router-dom"
 
 const AllJobs = () => {
+  const loadingState = useSelector((state) => state.loading)
+  const dispatch = useDispatch()
   const [data,setData] = useState([])
   const [searchParams,setSearchParams] = useSearchParams()
   const [page,setPage] = useState(1)
@@ -21,20 +24,28 @@ const AllJobs = () => {
 
   useEffect(() => {
     const getAllUsers = async () => {
-      const resp = await api.get(`/api/v1/job?page=${currentPage}&job=${jobSearchParams}&province=${provicneSearchParams}`)
-      setData(resp?.data?.data)
-      setTotalPages(resp?.data?.totalPages)
+      dispatch(showLoading())
+      try {
+        const resp = await api.get(`/api/v1/job?page=${currentPage}&job=${jobSearchParams}&province=${provicneSearchParams}`)
+        setData(resp?.data?.data)
+        setTotalPages(resp?.data?.totalPages)
+      } catch (error) {
+        console.log(error)
+      }finally{
+        dispatch(hideLoading())
+      }
     }
     getAllUsers()
-  },[currentPage,jobSearchParams,provicneSearchParams])
+  },[currentPage,jobSearchParams,provicneSearchParams,dispatch])
 
   if(!data) return <h1>Loading..</h1>
 
   return (
     <div className=''>
       <div className="max-w-[1240px] mx-auto flex flex-col md:flex-row relative">
-        {
-          data ?
+      {
+          loadingState?.loading
+          ? <h1 className='order-last font-bold text-2xl md:text-4xl w-full flex justify-center items-center text-center h-screen'>لطفا چند لحظه صبر کنید</h1> :
         <div className='order-last w-full md:w-fit p-4 mt-2 rounded-lg flex flex-col items-end text-right'>
           {data.map(jobs => {
             const {_id, jobTitle, cityOfJob, jobLocation,jobDesc,kindOfWorkerNeeded } = jobs
@@ -72,7 +83,7 @@ const AllJobs = () => {
 
 
         </div>
-        : <h1 className="w-full h-full bg-red-500">هیچ اطلاعاتی موجود نیست</h1>}
+}
         <div className='w-full p-4 mt-2 rounded-lg mx-3'>
             <SearchTable />
         </div>
