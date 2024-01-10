@@ -48,7 +48,7 @@ const Hire = () => {
           <div className='w-[80%] mx-auto flex'>
           <Link
           to='/hire-form'
-            className='bg-gray-400 transition-all hover:bg-gray-500 text-white font-bold px-10 py-2 rounded-xl font-bol mx-auto'
+            className='bg-yellow-500 w-full text-center transition-all hover:bg-yellow-600 text-white font-bold px-10 py-2 rounded-xl text-lg md:text-xl mx-auto'
           >
             ثبت آگاهی استخدام
           </Link>

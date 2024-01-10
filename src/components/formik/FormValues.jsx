@@ -43,8 +43,8 @@ export const currentJobType = [
     {key: 'وظیفه ندارم', value:'وظیفه ندارم'},
 ]
 export const jobExp = [
-    {key: 'تجربه دارم', value:'تجربه دارم'},
-    {key: 'تجربه ندارم', value:'تجربه ندارم'},
+    {key: 'تجربه کاری دارم', value:'تجربه کاری دارم'},
+    {key: 'تجربه کاری ندارم', value:'تجربه کاری ندارم'},
 ]
 
 export const genderOfSecer = [

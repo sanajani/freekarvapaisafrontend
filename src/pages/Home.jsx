@@ -2,23 +2,11 @@ import SearchAndPlace from '../components/homepagecomponents/SearchAndPlace'
 import { IoIosArrowDown } from 'react-icons/io'
 import FindJobHomePageComponent from '../components/homepagecomponents/FindJobHomePageComponent'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
-import { api } from '../utils/api'
+import { useSelector } from 'react-redux'
 
 const Home = () => {
-  const currentPage = 1
-  const jobSearchParams=''
-  const provicneSearchParams = ''
-  useEffect(() => {
-    const getAllUsers = async () => {
-      const resp = await api.get(`/api/v1/user/users?page=${currentPage}&job=${jobSearchParams}&province=${provicneSearchParams}`,{
-        timeout: 5000
-      })
-      console.log(resp);
-    }
-    getAllUsers()
-  },[])
-
+  const userData = useSelector((state) => state.user)
+  console.log(userData);
   return (
     <main className=' min-w-full'>
       <div className=' mx-auto py-20'>
@@ -66,16 +54,18 @@ const Home = () => {
           <div className='w-full md:max-w-[850px] 100 mx-auto flex justify-between flex-col md:flex-row'>
             <FindJobHomePageComponent
             text='قصد استخدام داری؟'
+            to='/hire-form'
             buttontext='اینجا آگاهی ثبت نام کن'
-            buttonStyle='border md:mb-5 mb-3 w-full rounded-full border-gray-500 py-2 bg-white bg-red-200 font-semibold'
+            buttonStyle='w-full my-3 border-2 hover:bg-yellow-700 hover:text-white transition-all inline-block text-center py-1 font-semibold rounded-lg'
             divStyle='px-4 py-2  shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] bg-white md:w-[350px] rounded-xl'
             pText='از خدمات ما برای استخدام نیروی جدید استفاده کن'
             />
             <FindJobHomePageComponent
-            pText=' به سادگی با جواب دادن چند سوال صاحب رزومه شو'
-            text='دنبال کار می گردی؟'
-            buttontext='اینجا ثبت نام کن'
-            buttonStyle='border md:mb-5 mb-3 w-full rounded-full border-gray-500 py-2 bg-white bg-red-200 font-semibold'
+            to={userData?.user ? '/jobs' : '/worker-account'}
+            pText={userData?.user ?'بیا اینجا و وظایف که مرتبط کار شما است آپلای کن':' به سادگی با جواب دادن به چند سوال صاحب رزومه شو'}
+            text={userData?.user ? 'دنبال کار می گردی؟' : 'ثبت رزومه'}
+            buttontext={userData?.user ? 'اینجا یک نظر بنداز' : 'اینجا ثبت نام کن'}
+            buttonStyle='w-full my-3 border-2 hover:bg-yellow-700 hover:text-white transition-all inline-block text-center py-1 font-semibold rounded-lg'
             divStyle='px-4 py-2  shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] bg-white md:w-[350px] rounded-xl'
             />
           </div>

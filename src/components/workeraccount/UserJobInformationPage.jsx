@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+// jobExp currentJob
 import { Formik, Form } from 'formik'
 import FormikControll from '../formik/FormikControll'
 import { radioOptionforeducationsWorker,currentJobType,jobExp,gender, kindOfJobOptionsForCheckbox } from '../formik/FormValues'
@@ -140,6 +140,7 @@ const UserJobInformationPage = ({initialValues,validationSchema,onSubmit,isWorke
                    label="تجربه کاری"
                    name='jobExp'
                    options={jobExp}
+                   
                 />
                 <FormikControll
                    controll='checkbox'

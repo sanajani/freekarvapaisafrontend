@@ -73,7 +73,7 @@ const Nav = () => {
                     to='/hire-form' className='flex items-center gap-2'>ثبت آگاهی استخدام <FaPlusSquare /></Link>
                 </li>
                 {!adminInformation?.adminData && <li className='my-4 px-4 font-semibold border-b-2 pb-2'><Link
-                to={!adminInformation?.adminData ? '/admin-form' : 'admin-account'}
+                to={!adminInformation?.adminData ? '/admin/form' : '/admin-account'}
                     onClick={() => setMenuOpen(false)}
                     className='flex items-center gap-2'>
                         {!adminInformation?.adminData ? `میخام وظیفه پوست کنم`:'وظایف پوست شده من'}

@@ -62,9 +62,8 @@ const UserProfileTable = () => {
                 </div>}
 
                 {data.jobExp && <div className='flex flex-row-reverse gap-2'>
-                  <p className='text-lg font-medium border-b-2 my-4'>من</p>
+                  {/* <p className='text-lg font-medium border-b-2 my-4'>من</p> */}
                   <p className='text-lg font-medium border-b-2 my-4'>{data.jobExp}</p>
-                  <p className='text-lg font-medium border-b-2 my-4'>سال تجربه کاری دارم</p>
                 </div>}
 
                {data.phoneNumber2 && <div className='text-lg font-medium border-b-2 my-4'>
@@ -79,9 +78,8 @@ const UserProfileTable = () => {
                 </div>}
 
                {data.currentJob && <div className='flex flex-row-reverse gap-2'>
-                  <p className='text-lg font-medium border-b-2 my-4'>فعلا در</p>
+                  <p className='text-lg font-medium border-b-2 my-4'>فعلا </p>
                   <p className='text-lg font-medium border-b-2 my-4'>{data.currentJob}</p>
-                  <p className='text-lg font-medium border-b-2 my-4'>کار میکنم</p>
                 </div>}
 
                 <div className='text-base font-medium border-b-2 my-4'>

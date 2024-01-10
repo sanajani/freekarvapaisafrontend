@@ -70,7 +70,7 @@ const PhoneNumberVerifier = () => {
         setisOTPSend(false)
       })
   }else{
-    showToast('لطفا شماره تماس درست را وارد کنید','error')
+    showToast('لطفا فقظ ده شماره مبایل تان را وارد کنید بدون فاصله و به اعداد انگلیسی','error')
   }
   }
 

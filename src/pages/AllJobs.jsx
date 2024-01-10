@@ -29,6 +29,7 @@ const AllJobs = () => {
         const resp = await api.get(`/api/v1/job?page=${currentPage}&job=${jobSearchParams}&province=${provicneSearchParams}`)
         setData(resp?.data?.data)
         setTotalPages(resp?.data?.totalPages)
+        console.log(resp);
       } catch (error) {
         console.log(error)
       }finally{
@@ -44,8 +45,8 @@ const AllJobs = () => {
     <div className=''>
       <div className="max-w-[1240px] mx-auto flex flex-col md:flex-row relative">
       {
-          loadingState?.loading
-          ? <h1 className='order-last font-bold text-2xl md:text-4xl w-full flex justify-center items-center text-center h-screen'>لطفا چند لحظه صبر کنید</h1> :
+          loadingState?.loading || data.length ===  0
+          ? <h1 className='order-last font-bold text-2xl md:text-4xl w-full flex justify-center items-center text-center h-screen'>{loadingState?.loading ? 'لطفا چند لحظه صبر کنید' : 'فعلا وظیفه ایی موجود نیست'}</h1> :
         <div className='order-last w-full md:w-fit p-4 mt-2 rounded-lg flex flex-col items-end text-right'>
           {data.map(jobs => {
             const {_id, jobTitle, cityOfJob, jobLocation,jobDesc,kindOfWorkerNeeded } = jobs
