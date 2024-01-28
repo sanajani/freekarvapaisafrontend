@@ -32,7 +32,7 @@ const JobSecers = () => {
         console.log(error);
         // message: ,
 
-        if(error.message === 'timeout of 10000ms exceeded'){
+        if(error.message === 'timeout of 15000ms exceeded'){
           showToast('انترنیت ضعیف است','error')
         }else{
           showToast(error.message,'error')
@@ -51,7 +51,7 @@ const JobSecers = () => {
       <div className="max-w-[1240px] w-full mx-auto flex flex-col md:flex-row relative">
         {
           loadingState?.loading || data.length ===  0
-          ? <h1 className='order-last font-bold text-2xl md:text-4xl w-full flex justify-center items-center text-center h-screen'>{loadingState?.loading ? 'لطفا چند لحظه صبر کنید' : 'فعلا وظیفه ایی موجود نیست'}</h1> :
+          ? <h1 className='order-last font-bold text-2xl md:text-4xl w-full flex justify-center items-center text-center h-screen'>{loadingState?.loading ? 'لطفا چند لحظه صبر کنید' : 'فعلا هیچ کارمندی برای کار موجود نیست'}</h1> :
         <div className='order-last w-full md:w-fit p-4 mt-2 rounded-lg flex flex-col items-end text-right'>
           {data?.map(jobSecer => {
             const {_id, name, city, userInformation, jobExp, typeOfJob ,job } = jobSecer
